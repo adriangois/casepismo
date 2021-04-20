@@ -2,13 +2,15 @@ package br.com.pismo.casepismo.controllers
 
 import br.com.pismo.casepismo.exceptions.AccountExceptions
 import br.com.pismo.casepismo.models.Account
-import br.com.pismo.casepismo.services.AccountService
+import br.com.pismo.casepismo.models.OperationsType
+import br.com.pismo.casepismo.models.Transaction
+import br.com.pismo.casepismo.requesters.TransactionRequest
+import br.com.pismo.casepismo.services.TransactionsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -18,22 +20,32 @@ import javax.persistence.EntityExistsException
 import javax.persistence.PersistenceException
 
 @RestController
-@RequestMapping('accounts')
-class AccountController {
+@RequestMapping('transactions')
+class TransactionController {
 
     @Autowired
-    AccountService accountService
+    TransactionsService transactionService
+
 
     @PostMapping('')
-    def create(@RequestBody Account account) throws Exception {
-        accountService.create(account)
+    def create(@RequestBody TransactionRequest transactionRequest){
+        transactionService.create(mapperTransaction(transactionRequest))
     }
 
 
-    @GetMapping('{id}')
-    def accountById(@PathVariable long id) {
-        accountService.findById(id)
+    @GetMapping('')
+    def findAll(){
+        def map = [:]
+        //Output map
+        transactionService.findAll().each {
+            map.put "account_id", it.account.accountId
+            map.put "operation_type_id", it.operationsType.operationsTypeId
+            map.put "ammount" , it.ammount
+        }
+        map
     }
+
+
 
     @ExceptionHandler([PersistenceException.class])
     def handleException(Exception ex) {
@@ -42,6 +54,16 @@ class AccountController {
         else {
             new ResponseEntity<Object>(new AccountExceptions(ex.message, HttpStatus.INTERNAL_SERVER_ERROR.value()), HttpStatus.INTERNAL_SERVER_ERROR)
         }
+    }
+    /**
+     * Method for map trasaction request to entity
+     * @param transactionRequest
+     * @return Transaction entity
+     */
+    private mapperTransaction(TransactionRequest transactionRequest){
+        new Transaction(ammount: transactionRequest.ammount
+                , account: new Account(accountId:  transactionRequest.account),
+                operationsType: new OperationsType(operationsTypeId: transactionRequest.operationsType))
     }
 
 }

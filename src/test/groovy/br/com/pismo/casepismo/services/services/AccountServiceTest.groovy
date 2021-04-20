@@ -1,8 +1,8 @@
-package br.com.pismo.casepismo.units.services
+package br.com.pismo.casepismo.services.services
 
 import br.com.pismo.casepismo.models.Account
 import br.com.pismo.casepismo.repositories.AccountRepository
-import br.com.pismo.casepismo.units.AccountService
+import br.com.pismo.casepismo.services.AccountService
 import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -29,10 +29,6 @@ class AccountServiceTest {
         assertThat(returnedAccount.accountId).is(1)
     }
 
-    @Test
-    void shouldExceptionDuplicationAccount(){
-        
-    }
 
     @Test
     void shouldCreateAccount() {
