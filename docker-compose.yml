@@ -10,6 +10,8 @@ services:
       - MYSQL_DATABASE=casepismo
     expose:
       - 3306
+    ports:
+    - "3306:3307"
     volumes:
       - "/usr/local/mysql/data:/var/lib/mysql/data"
     networks:
@@ -25,5 +27,8 @@ services:
       - "8080:8080"
     depends_on:
       - mysql
+    links:
+      - mysql:mysql
 networks:
   backend:
+

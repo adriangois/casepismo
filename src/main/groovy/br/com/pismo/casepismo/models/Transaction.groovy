@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.util.JSONWrappedObject
-import com.sun.org.glassfish.external.statistics.impl.TimeStatisticImpl
 
 import javax.persistence.CascadeType
 import javax.persistence.Column
