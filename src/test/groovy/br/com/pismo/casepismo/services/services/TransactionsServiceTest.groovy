@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import static org.assertj.core.api.Assertions.assertThat
 
@@ -21,6 +22,9 @@ class TransactionsServiceTest {
     @InjectMocks
     TransactionsService transactionsService
 
+    @Autowired
+    TransactionsService transactionsServiceReal
+
 
     @Test
     void createTransactionTest(){
@@ -32,6 +36,12 @@ class TransactionsServiceTest {
 
         assertThat(tReturned.account.accountId).is(1)
 
+    }
+
+    @Test
+    void findAllTransactions(){
+        def lista = transactionsServiceReal.findAll()
+        assertThat(lista.size()).isGreaterThan(1)
     }
 
 }

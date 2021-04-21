@@ -35,14 +35,16 @@ class TransactionController {
 
     @GetMapping('')
     def findAll(){
-        def map = [:]
+        def listOut = new ArrayList()
         //Output map
         transactionService.findAll().each {
+            def map = [:]
             map.put "account_id", it.account.accountId
             map.put "operation_type_id", it.operationsType.operationsTypeId
             map.put "ammount" , it.ammount
+            listOut.add(map)
         }
-        map
+        listOut
     }
 
 
@@ -62,8 +64,8 @@ class TransactionController {
      */
     private mapperTransaction(TransactionRequest transactionRequest){
         new Transaction(ammount: transactionRequest.ammount
-                , account: new Account(accountId:  transactionRequest.account),
-                operationsType: new OperationsType(operationsTypeId: transactionRequest.operationsType))
+                , account: new Account(accountId:  transactionRequest.account_id),
+                operationsType: new OperationsType(operationsTypeId: transactionRequest.operations_type_id))
     }
 
 }

@@ -2,24 +2,30 @@ version: '3'
 
 services:
 
+  #DB
+
   mysql:
-    image: mysql:5.6
+    image: mysql:5.7
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=M@g1st3r10
       - MYSQL_DATABASE=casepismo
     expose:
       - 3306
-    ports:
-    - "3306:3307"
-    volumes:
-      - "/usr/local/mysql/data:/var/lib/mysql/data"
+
     networks:
       - backend
+
+
+  #Api
   springboot:
     build:
       context: ./
       dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/casepismo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: M@g1st3r10
     image: pismocontainer:latest
     networks:
       - backend
@@ -28,7 +34,6 @@ services:
     depends_on:
       - mysql
     links:
-      - mysql:mysql
+      - mysql
 networks:
   backend:
-

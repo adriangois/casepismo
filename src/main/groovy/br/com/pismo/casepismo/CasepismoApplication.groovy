@@ -8,6 +8,7 @@ class CasepismoApplication {
 
 	static void main(String[] args) {
 		SpringApplication.run(CasepismoApplication, args)
+
 	}
 
 }
