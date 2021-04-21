@@ -26,7 +26,10 @@ class AccountController {
 
     @PostMapping('')
     def create(@RequestBody Account account) throws Exception {
-        accountService.create(account)
+        def mapAccount = [:]
+        def out = accountService.create(account)
+        mapAccount.put "document_number" , out.documentNumber
+        mapAccount
     }
 
 
