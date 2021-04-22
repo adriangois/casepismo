@@ -29,4 +29,13 @@ class AccountService {
             throw new EntityNotFoundException("Account not exist")
         })
     }
+
+
+    /**
+     * TODO Remover
+     */
+    def accountBalance(long accountId){
+        accountRepository.accountBalance(accountId)
+    }
+
 }

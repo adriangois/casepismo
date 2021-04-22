@@ -18,7 +18,7 @@ class OperationsType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long operationsTypeId
+    long operationsTypeId
 
     @Column(nullable = false)
     String description

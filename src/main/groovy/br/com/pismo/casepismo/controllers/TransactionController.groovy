@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 
 import javax.persistence.EntityExistsException
 import javax.persistence.PersistenceException
+import java.text.SimpleDateFormat
 
 @RestController
 @RequestMapping('transactions')
@@ -42,10 +43,12 @@ class TransactionController {
             map.put "account_id", it.account.accountId
             map.put "operation_type_id", it.operationsType.operationsTypeId
             map.put "ammount" , it.ammount
+            map.put "event_date" , it.eventDate
             listOut.add(map)
         }
         listOut
     }
+
 
 
 

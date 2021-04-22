@@ -44,4 +44,21 @@ class TransactionsServiceTest {
         assertThat(lista.size()).isGreaterThan(1)
     }
 
+
+    @Test
+    void operationTypeTest(){
+        assertThat(transactionsService.operationType(1)).is(-1)
+        assertThat(transactionsService.operationType(2)).is(-1)
+        assertThat(transactionsService.operationType(3)).is(-1)
+        assertThat(transactionsService.operationType(4)).is(1)
+    }
+
+
+    @Test
+    void findByDateTest(){
+        def tran =  transactionsService.findByDate(new Date())
+
+    }
+
+
 }
