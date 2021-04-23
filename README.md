@@ -47,11 +47,11 @@ git clone https://github.com/adriangois/casepismo.git
 
 Linux ou Mac
 
-``./gradlew build``
+``./gradlew build -x test``
 
 Windows
 
-``gradle.bat build``
+``gradle.bat build -x test``
 
 4.Dentro da pasta do projeto, digitar:
 
