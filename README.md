@@ -18,7 +18,7 @@ A *stack* utilizada no *Spring Boot* foi a seguinte:
 
 ### Swagger
 
-Foi incluido o Swagger como parte da documentação no projeto. Basta acessar http://<sua maquina>:8080/swagger-ui.html para visualizar e testar as apis.
+Foi incluido o Swagger como parte da documentação no projeto. Basta acessar http://[sua maquina]:8080/swagger-ui.html para visualizar e testar as apis.
 
 ### Docker
 
