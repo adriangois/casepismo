@@ -6,7 +6,7 @@ Este projeto faz parte da construção de uma api com Java, Groovy ou Go de acor
 
 ### Arquitetura
 
-O projeto utilizou o *Spring Boot* com *Groovy* para o microserviço e para o Banco de Dados foi utilizado o *Mysql 5.7*.
+O projeto foi elabora com  o *Spring Boot* + *Groovy* para o microserviço e para o Banco de Dados foi utilizado o *Mysql 5.7*.
 
 ### O Spring Boot
 A *stack* utilizada no *Spring Boot* foi a seguinte:
