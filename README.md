@@ -16,6 +16,9 @@ A *stack* utilizada no *Spring Boot* foi a seguinte:
 3. REST como interface de comunicação das apis;
 4. Gradle como gestão de build.
 
+### Swagger
+
+Foi incluido o Swagger como parte da documentação no projeto. Basta acessar http://<sua maquina>:8080/swagger-ui.html para visualizar e testar as apis.
 
 ### Docker
 
