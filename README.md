@@ -40,8 +40,17 @@ git clone https://github.com/adriangois/casepismo.git
 ``spring.datasource.username=<seu usuario>``
 
 ``spring.datasource.password=<sua senha>``
+3.Rodar o build do gradle:
 
-3.Dentro da pasta do projeto, digitar:
+Linux ou Mac
+
+``./gradlew build``
+
+Windows
+
+``gradle.bat build``
+
+4.Dentro da pasta do projeto, digitar:
 
 Linux ou Mac
 
@@ -60,7 +69,7 @@ gradlew.bat bootRun
 O projeto contem dois arquivos de configuração Docker. O arquivo padrão *Dockerfile* na raiz do projeto prepara o container responsável pela subida do serviço Spring Boot.
 O docker-compose.yml, configura os dois containers (MySql e Spring Boot) dentra de uma stack só. Veja a seguir um exemplo:
 
-![alt text](https://github.com/adriangois/casepismo/docs/master/stack.jpg?raw=true)
+![alt text](https://github.com/adriangois/casepismo/blob/master/docs/stack.png?raw=true)
 
 
 Para rodar o projeto você precisa apenas dos seguintes comandos:
