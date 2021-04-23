@@ -40,6 +40,7 @@ git clone https://github.com/adriangois/casepismo.git
 ``spring.datasource.username=<seu usuario>``
 
 ``spring.datasource.password=<sua senha>``
+
 3.Rodar o build do gradle:
 
 Linux ou Mac
