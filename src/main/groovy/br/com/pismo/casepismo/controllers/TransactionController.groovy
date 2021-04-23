@@ -1,6 +1,7 @@
 package br.com.pismo.casepismo.controllers
 
 import br.com.pismo.casepismo.exceptions.AccountExceptions
+import br.com.pismo.casepismo.exceptions.ValidateTransactionException
 import br.com.pismo.casepismo.models.Account
 import br.com.pismo.casepismo.models.OperationsType
 import br.com.pismo.casepismo.models.Transaction
@@ -28,7 +29,8 @@ class TransactionController {
 
 
     @PostMapping('')
-    def create(@RequestBody TransactionPojo transactionRequest) {
+    def create(@RequestBody TransactionPojo transactionRequest) throws ValidateTransactionException {
+        validate(transactionRequest)
         def out = transactionService.create(mapper(transactionRequest))
         mapperReturnCreate(out)
     }
@@ -44,7 +46,7 @@ class TransactionController {
     }
 
 
-    @ExceptionHandler([PersistenceException.class])
+    @ExceptionHandler([PersistenceException.class, ValidateTransactionException.class])
     def handleException(Exception ex) {
         if (ex instanceof EntityExistsException)
             new ResponseEntity<Object>(new AccountExceptions(ex.message, HttpStatus.CONFLICT.value()), HttpStatus.CONFLICT)
@@ -85,4 +87,9 @@ class TransactionController {
         new TransactionPojo(event_date: out?.eventDate, account_id: out.account?.id, ammount: out?.ammount, operations_type_id: out?.operationsType?.id)
     }
 
+    private void validate(TransactionPojo transactionPojo) throws ValidateTransactionException{
+        if(!transactionPojo.ammount) throw new ValidateTransactionException("Mandatory: ammount" , HttpStatus.BAD_REQUEST.ordinal())
+        if(!transactionPojo.operations_type_id) throw new ValidateTransactionException("Mandatory: operations_type_id" , HttpStatus.BAD_REQUEST.ordinal())
+        if(!transactionPojo.account_id) throw new ValidateTransactionException("Mandatory: account_id" , HttpStatus.BAD_REQUEST.ordinal())
+    }
 }

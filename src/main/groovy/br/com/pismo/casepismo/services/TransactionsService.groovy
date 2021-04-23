@@ -2,6 +2,7 @@ package br.com.pismo.casepismo.services
 
 import br.com.pismo.casepismo.models.Transaction
 import br.com.pismo.casepismo.repositories.TransactionsRepository
+import br.com.pismo.casepismo.util.OperationsTypeEnum
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -18,7 +19,7 @@ class TransactionsService {
     }
 
     int operationType(long operationTypeId){
-        if(operationTypeId == 4){
+        if(OperationsTypeEnum.PAGAMENTO.getValue() == operationTypeId){
             1
         }else{
             -1
