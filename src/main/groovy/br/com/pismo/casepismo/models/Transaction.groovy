@@ -17,7 +17,7 @@ class Transaction {
 
     @Column(nullable = false)
     @JsonIgnore
-    Date eventDate = new Date()
+    Date eventDate = Date.newInstance()
 
     @ManyToOne(optional = false)
     @JsonIgnore

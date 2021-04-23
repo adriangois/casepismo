@@ -8,7 +8,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=M@g1st3r10
+      - MYSQL_ROOT_PASSWORD=C@$eP1sm0
       - MYSQL_DATABASE=casepismo
     expose:
       - 3306
@@ -25,7 +25,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/casepismo
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: M@g1st3r10
+      SPRING_DATASOURCE_PASSWORD: C@$eP1sm0
     image: pismocontainer:latest
     networks:
       - backend
