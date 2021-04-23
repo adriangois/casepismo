@@ -85,6 +85,13 @@ sudo docker-compose --build
 
 e pronto! Sua aplicação deve estar no ar. 
 
+> **Atenção** para o tempo de subida dos containers. Geralmente, quando sobe a primeira vez, demora-se um pouco mais, pois o *helthcheck* da aplicação aguarda a subida do MySql para continuar.
+
+Abaixo um exemplo em que o Spring Boot "agurda" a subida completa do MySql.
+
+![alt text](https://github.com/adriangois/casepismo/blob/master/docs/helthcheck.png?raw=true)
+
+
 ### Postman
 
 Na pasta `/casepismo/docs/`, o arquivo PISMO.postman_collection.json pode ser exportada no Postman para execução das apis.

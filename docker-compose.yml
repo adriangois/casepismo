@@ -1,4 +1,4 @@
-version: '3'
+version: '2.1'
 
 services:
 
@@ -15,6 +15,10 @@ services:
 
     networks:
       - backend
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
 
 
   #Api
@@ -32,7 +36,9 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+
     links:
       - mysql
 networks:
