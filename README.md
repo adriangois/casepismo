@@ -1,14 +1,14 @@
-#Case pismo
+# Case pismo
 
-###Objetivo
+### Objetivo
 
 Este projeto faz parte da construção de uma api com Java, Groovy ou Go para fins de seleção junto a Pismo.
 
-###Arquitetura
+### Arquitetura
 
 O projeto foi construido em *Spring Boot* com *Groovy* para o microserviço. Para o Banco de Dados utilizei o *Mysql 5.7*.
 
-###O Spring Boot
+### O Spring Boot
 A *stack* utilizada no *Spring Boot* foi a seguinte:
 1. JPA como camada de persistência;
 2. Swagger para documentação e testes das apis;
@@ -16,16 +16,16 @@ A *stack* utilizada no *Spring Boot* foi a seguinte:
 4. Gradle como gestão de build.
 
 
-###Docker
+### Docker
 
 O projeto foi preparado para ser um *docker compose* com duas stacks: o MySql e a aplicação.
 Mais adiante, veremos como rodar em sua máquina local ou via docker.
 
-###Quick Start
+### Quick Start
 
 Existem duas formas de rodar o projeto, sendo que a primeira, devo partir do pressuposto que já existe na máquina um ambiente MySql instalado. Veja a seguir como rodar o projeto:
 
-####Via Gradle
+#### Via Gradle
 
 1.Fazer o clone do projeto:
 
@@ -55,7 +55,7 @@ Windows
 gradlew.bat bootRun
 ``
 
-####Via Docker
+#### Via Docker
 
 O projeto contem dois arquivos de configuração Docker. O arquivo padrão *Dockerfile* na raiz do projeto prepara o container responsável pela subida do serviço Spring Boot.
 O docker-compose.yml, configura os dois containers (MySql e Spring Boot) dentra de uma stack só. Veja a seguir um exemplo:
@@ -75,10 +75,10 @@ sudo docker-compose --build
 
 e pronto! Sua aplicação deve estar no ar. 
 
-###Postman
+### Postman
 
 Na pasta `/casepismo/docs/`, o arquivo PISMO.postman_collection.json pode ser exportada no Postman para execução das apis.
 
-###Carga inicial
+### Carga inicial
 
 O projeto dá uma carga com 4 tipos de operações na tabela `operations_type` para facilitar nos teste de criação das `transactions`.
