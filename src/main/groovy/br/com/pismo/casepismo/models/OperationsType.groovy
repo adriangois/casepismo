@@ -18,14 +18,12 @@ class OperationsType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long operationsTypeId
+    @JsonProperty("operations_type_id")
+    long id
 
     @Column(nullable = false)
     String description
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = 'operationsType')
     List<Transaction> transactions
-
-
-
 }

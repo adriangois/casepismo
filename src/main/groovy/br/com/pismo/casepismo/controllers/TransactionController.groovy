@@ -4,7 +4,7 @@ import br.com.pismo.casepismo.exceptions.AccountExceptions
 import br.com.pismo.casepismo.models.Account
 import br.com.pismo.casepismo.models.OperationsType
 import br.com.pismo.casepismo.models.Transaction
-import br.com.pismo.casepismo.requesters.TransactionRequest
+import br.com.pismo.casepismo.requesters.TransactionPojo
 import br.com.pismo.casepismo.services.TransactionsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController
 
 import javax.persistence.EntityExistsException
 import javax.persistence.PersistenceException
-import java.text.SimpleDateFormat
 
 @RestController
 @RequestMapping('transactions')
@@ -29,27 +28,20 @@ class TransactionController {
 
 
     @PostMapping('')
-    def create(@RequestBody TransactionRequest transactionRequest){
-        transactionService.create(mapperTransaction(transactionRequest))
+    def create(@RequestBody TransactionPojo transactionRequest) {
+        def out = transactionService.create(mapper(transactionRequest))
+        mapperReturnCreate(out)
     }
 
 
     @GetMapping('')
-    def findAll(){
+    def findAll() {
         def listOut = new ArrayList()
-        //Output map
         transactionService.findAll().each {
-            def map = [:]
-            map.put "account_id", it.account.accountId
-            map.put "operation_type_id", it.operationsType.operationsTypeId
-            map.put "ammount" , it.ammount
-            map.put "event_date" , it.eventDate
-            listOut.add(map)
+            listOut.add(mapperReturnToList(it))
         }
         listOut
     }
-
-
 
 
     @ExceptionHandler([PersistenceException.class])
@@ -65,10 +57,32 @@ class TransactionController {
      * @param transactionRequest
      * @return Transaction entity
      */
-    private mapperTransaction(TransactionRequest transactionRequest){
+    private mapper(TransactionPojo transactionRequest) {
         new Transaction(ammount: transactionRequest.ammount
-                , account: new Account(accountId:  transactionRequest.account_id),
-                operationsType: new OperationsType(operationsTypeId: transactionRequest.operations_type_id))
+                , account: new Account(id: transactionRequest.account_id),
+                operationsType: new OperationsType(id: transactionRequest.operations_type_id))
+    }
+
+    /**
+     * Mothod for map transaction returned in create accord the documentation
+     * @param out
+     * @return
+     */
+    private Map mapperReturnCreate(Transaction out) {
+        def map = [:]
+        map.put("ammount", out.ammount)
+        map.put("operations_type_id", out.operationsType?.id)
+        map.put("account_id", out.account?.id)
+        map
+    }
+
+    /**
+     * Private Method for map the return to list transactions
+     * @param out
+     * @return
+     */
+    private TransactionPojo mapperReturnToList(Transaction out) {
+        new TransactionPojo(event_date: out?.eventDate, account_id: out.account?.id, ammount: out?.ammount, operations_type_id: out?.operationsType?.id)
     }
 
 }

@@ -1,6 +1,6 @@
 package br.com.pismo.casepismo
 
-import com.google.common.base.Predicates
+
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
@@ -13,12 +13,11 @@ import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
 
-
 @Configuration
 @EnableSwagger2
-class SwaggerConfig extends WebMvcConfigurationSupport{
+class SwaggerConfig extends WebMvcConfigurationSupport {
     @Bean
-    public Docket postsApi() {
+     Docket postsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
@@ -26,15 +25,15 @@ class SwaggerConfig extends WebMvcConfigurationSupport{
                 .paths(PathSelectors.any())
                 .build()
     }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Case Pismo REST API")
-                .description("\"Spring Boot REST API\"")
+                .description("\"Case for live code.\"")
                 .version("1.0.0")
-                .license("Apache License Version 2.0")
-                .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
-                        .build();
+                .build()
     }
+
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")

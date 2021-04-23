@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 @SpringBootApplication
 class CasepismoApplication {
 
-	static void main(String[] args) {
-		SpringApplication.run(CasepismoApplication, args)
+    static void main(String[] args) {
+        SpringApplication.run(CasepismoApplication, args)
 
-	}
+    }
 
 }

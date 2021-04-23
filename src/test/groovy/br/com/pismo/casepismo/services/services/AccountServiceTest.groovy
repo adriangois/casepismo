@@ -24,18 +24,18 @@ class AccountServiceTest {
 
     @Test
     void shouldGetAccountById() {
-        Mockito.when(accountRepository.findById(1)).thenReturn(Optional.of(new Account(accountId: 1, documentNumber: '3')))
+        Mockito.when(accountRepository.findById(1)).thenReturn(Optional.of(new Account(id: 1, documentNumber: '3')))
         Account returnedAccount = accountService.findById(1)
-        assertThat(returnedAccount.accountId).is(1)
+        assertThat(returnedAccount.id).is(1)
     }
 
 
     @Test
     void shouldCreateAccount() {
-        Account newAccount = new Account(accountId: 2, documentNumber: '34')
+        Account newAccount = new Account(id: 2, documentNumber: '34')
         Mockito.when(accountRepository.save(Mockito.any(Account.class))).thenReturn(newAccount)
         Account returned = accountService.create(newAccount)
-        assertThat(returned.accountId).is(2)
+        assertThat(returned.id).is(2)
     }
 
 

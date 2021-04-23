@@ -20,7 +20,7 @@ class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("account_id")
-    Long accountId
+    Long id
 
     @Column(nullable = false)
     @JsonProperty("document_number")

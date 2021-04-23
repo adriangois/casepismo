@@ -8,16 +8,16 @@ import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Component
 
 @Component
-class LoadOperationsType implements ApplicationRunner{
+class LoadOperationsType implements ApplicationRunner {
 
     @Autowired
     OperationsTypeRepository operationsTypeRepository
 
     @Override
     void run(ApplicationArguments args) throws Exception {
-        operationsTypeRepository.save(new OperationsType(operationsTypeId:  1, description: "COMPRA A VISTA"))
-        operationsTypeRepository.save(new OperationsType(operationsTypeId:  2, description: "COMPRA PARCELADA"))
-        operationsTypeRepository.save(new OperationsType(operationsTypeId:  3, description: "SAQUE"))
-        operationsTypeRepository.save(new OperationsType(operationsTypeId:  4, description: "PAGAMENTO"))
+        operationsTypeRepository.save(new OperationsType(id: 1, description: "COMPRA A VISTA"))
+        operationsTypeRepository.save(new OperationsType(id: 2, description: "COMPRA PARCELADA"))
+        operationsTypeRepository.save(new OperationsType(id: 3, description: "SAQUE"))
+        operationsTypeRepository.save(new OperationsType(id: 4, description: "PAGAMENTO"))
     }
 }

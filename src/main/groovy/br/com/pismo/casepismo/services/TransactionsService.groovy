@@ -13,11 +13,11 @@ class TransactionsService {
     TransactionsRepository transactionsRepository
 
     def create(Transaction transaction) {
-        transaction?.ammount = transaction?.ammount * operationType(transaction?.operationsType?.operationsTypeId)
+        transaction?.ammount = transaction?.ammount * this.operationType(transaction?.operationsType?.id)
         transactionsRepository.save(transaction)
     }
 
-    def operationType(long operationTypeId){
+    int operationType(long operationTypeId){
         if(operationTypeId == 4){
             1
         }else{
@@ -30,7 +30,4 @@ class TransactionsService {
     }
 
 
-    def findByDate(Date date) {
-            transactionsRepository.findByDate(date)
-    }
 }
