@@ -1,15 +1,15 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "64c67e82-2395-4518-a1ae-5bb9416bf8e7",
 		"name": "PISMO",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "43f433f1-8cd2-9931-5134-9783f0a17d05",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Get Account by accountId",
 			"request": {
-				"method": "GET",
-				"header": [],
 				"url": {
 					"raw": "{{url}}/accounts/:accountId",
 					"host": [
@@ -19,41 +19,471 @@
 						"accounts",
 						":accountId"
 					],
+					"query": [],
 					"variable": [
 						{
 							"key": "accountId",
 							"value": "1"
 						}
 					]
-				}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
 			},
-			"response": []
+			"response": [
+				{
+					"id": "ba0d56cf-75df-4136-8e95-64c7487b2acb",
+					"name": "500 - Account not exist",
+					"originalRequest": {
+						"url": {
+							"raw": "{{url}}/accounts/:accountId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								":accountId"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "1"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 23 Apr 2021 14:45:57 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 458,
+					"body": "{\"message\":\"Account not exist\",\"status\":500}"
+				},
+				{
+					"id": "ab25e8f1-9924-4af7-9019-d1248424b37d",
+					"name": "200 - Get Account by accountId",
+					"originalRequest": {
+						"url": {
+							"raw": "{{url}}/accounts/:accountId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								":accountId"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "1"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 23 Apr 2021 14:47:22 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=60",
+							"description": "Custom header"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 21,
+					"body": "{\"account_id\":1,\"document_number\":\"93435029587\"}"
+				}
+			]
 		},
 		{
 			"name": "Create Account",
 			"request": {
+				"url": "{{url}}/accounts",
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"documentNumber\" : \"93435029587\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n    \"document_number\" : \"93435029587\"\n}"
 				},
-				"url": {
-					"raw": "{{url}}/accounts",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"accounts"
-					]
-				}
+				"description": ""
 			},
-			"response": []
+			"response": [
+				{
+					"id": "cde9ba26-7165-472f-b2b2-8d78f829de89",
+					"name": "200 - Create Account",
+					"originalRequest": {
+						"url": "{{url}}/accounts",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"document_number\" : \"93435029587\"\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 23 Apr 2021 14:46:02 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=60",
+							"description": "Custom header"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 295,
+					"body": "{\"account_id\":1,\"document_number\":\"93435029587\"}"
+				},
+				{
+					"id": "4749f056-050f-4d93-a246-b79760edd9bb",
+					"name": "500 - Erro null property Account",
+					"originalRequest": {
+						"url": "{{url}}/accounts",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"documentNumber\" : \"\"\n}"
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 23 Apr 2021 14:51:19 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 49,
+					"body": "{\"message\":\"not-null property references a null or transient value : br.com.pismo.casepismo.models.Account.documentNumber; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : br.com.pismo.casepismo.models.Account.documentNumber\",\"status\":500}"
+				}
+			]
+		},
+		{
+			"name": "Get transactions",
+			"request": {
+				"url": "{{url}}/transactions",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "38e8ac94-4ebc-45d9-bc8f-fd641ea70b0c",
+					"name": "200- Get transactions",
+					"originalRequest": {
+						"url": "{{url}}/transactions",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 23 Apr 2021 14:46:09 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=60",
+							"description": "Custom header"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 49,
+					"body": "[{\"account_id\":1,\"operations_type_id\":2,\"ammount\":-100.0,\"event_date\":\"23/4/2021\"}]"
+				}
+			]
+		},
+		{
+			"name": "Create Transactions",
+			"request": {
+				"url": "{{url}}/transactions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account_id\" : 1, \"operations_type_id\" : 2, \"ammount\":100\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "75bd2c36-c4c0-4876-affb-1238eb77e222",
+					"name": "200 - Create Transactions",
+					"originalRequest": {
+						"url": "{{url}}/transactions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\" : 1, \"operations_type_id\" : 2, \"ammount\":100\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 23 Apr 2021 14:46:07 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=60",
+							"description": "Custom header"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 84,
+					"body": "{\"ammount\":-100.0,\"operations_type_id\":2,\"account_id\":1}"
+				},
+				{
+					"id": "e57c7046-af4b-4514-9424-4e91f208690e",
+					"name": "500 - Error Create Transactions",
+					"originalRequest": {
+						"url": "{{url}}/transactions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\" : 1, \"operations_type_id\" : 2\n}"
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 23 Apr 2021 14:52:26 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 28,
+					"body": "{\"timestamp\":1619189546199,\"status\":500,\"error\":\"Internal Server Error\",\"path\":\"/transactions\"}"
+				}
+			]
 		}
 	]
 }
