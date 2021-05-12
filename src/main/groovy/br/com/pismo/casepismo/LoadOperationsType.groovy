@@ -31,6 +31,7 @@ class LoadOperationsType implements ApplicationRunner {
     @Value("\${sqs.url}")
     String sqsUrl
 
+
     @Override
     void run(ApplicationArguments args) throws Exception {
         operationsTypeRepository.save(new OperationsType(id: 1, description: "COMPRA A VISTA"))
@@ -40,12 +41,12 @@ class LoadOperationsType implements ApplicationRunner {
 
         AWSCredentialsProvider provider = new AWSStaticCredentialsProvider(new BasicAWSCredentials(awsKey, awsPass))
         AmazonSQS amazonSQS = AmazonSQSClientBuilder.standard().withRegion("us-east-2").withCredentials(provider).build()
-        while (true) {
-            amazonSQS.receiveMessage(sqsUrl).getMessages().each {
-                println """************** ${it.Body}"""
-                final String messageHandle = it.getReceiptHandle()
-                amazonSQS.deleteMessage(sqsUrl, messageHandle)
-            }
-        }
+//        while (true) {
+//            amazonSQS.receiveMessage(sqsUrl).getMessages().each {
+//                println """************** ${it.Body}"""
+//                final String messageHandle = it.getReceiptHandle()
+//                amazonSQS.deleteMessage(sqsUrl, messageHandle)
+//            }
+//        }
     }
 }
