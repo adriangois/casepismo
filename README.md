@@ -1,4 +1,4 @@
-# Case pismo testes Draft
+# Case pismo testes NaVera
 ### Objetivo
 
 Este projeto faz parte da construção de uma api com Java, Groovy ou Go de acordo com especificações da Pismo.
